@@ -29,7 +29,7 @@ class LoginController: UIViewController {
         loginBtn.layer.cornerRadius = 20
         loginBtn.clipsToBounds = true
         
-        registerBtn.layer.cornerRadius = 20
+        registerBtn.layer.cornerRadius = 10
         registerBtn.clipsToBounds = true
         
     }
@@ -37,9 +37,9 @@ class LoginController: UIViewController {
     @IBAction func registerActivity(_ sender: Any) {
         performSegue(withIdentifier: "registerSegue", sender: sender)
     }
+    @IBAction func loginActivity(_ sender: Any) {
+        performSegue(withIdentifier: "mainActivity", sender: sender)
+    }
     
-    
-
-
 }
 
