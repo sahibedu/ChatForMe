@@ -10,6 +10,7 @@
 		2F905B8620703DD60002CAE5 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F905B8520703DD60002CAE5 /* RegisterController.swift */; };
 		2FA445102070492A00855AB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FA4450F2070492A00855AB9 /* GoogleService-Info.plist */; };
 		2FA44512207052AB00855AB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA44511207052AB00855AB9 /* MainViewController.swift */; };
+		2FA445142070575C00855AB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA445132070575C00855AB9 /* Constants.swift */; };
 		2FCD842C206E827C001EC508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD842B206E827C001EC508 /* AppDelegate.swift */; };
 		2FCD842E206E827C001EC508 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD842D206E827C001EC508 /* LoginController.swift */; };
 		2FCD8431206E827C001EC508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FCD842F206E827C001EC508 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		2F905B8520703DD60002CAE5 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		2FA4450F2070492A00855AB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FA44511207052AB00855AB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2FA445132070575C00855AB9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2FCD8428206E827C001EC508 /* ChatMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FCD842B206E827C001EC508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FCD842D206E827C001EC508 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				2FCD8437206E827D001EC508 /* Info.plist */,
 				2F905B8520703DD60002CAE5 /* RegisterController.swift */,
 				2FA44511207052AB00855AB9 /* MainViewController.swift */,
+				2FA445132070575C00855AB9 /* Constants.swift */,
 			);
 			path = ChatMe;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA445142070575C00855AB9 /* Constants.swift in Sources */,
 				2FCD842E206E827C001EC508 /* LoginController.swift in Sources */,
 				2FCD842C206E827C001EC508 /* AppDelegate.swift in Sources */,
 				2F905B8620703DD60002CAE5 /* RegisterController.swift in Sources */,

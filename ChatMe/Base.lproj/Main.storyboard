@@ -286,7 +286,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="light"/>
                                         </textField>
                                     </barButtonItem>
                                     <barButtonItem systemItem="compose" id="CT6-SI-04A">
@@ -372,6 +372,7 @@
                         <viewLayoutGuide key="safeArea" id="aoZ-ra-7bE"/>
                     </view>
                     <connections>
+                        <outlet property="messageTableView" destination="sdD-sA-mLD" id="Gil-4C-OAF"/>
                         <outlet property="messageTextField" destination="mOv-pG-zQ6" id="gCU-fz-tPe"/>
                     </connections>
                 </viewController>
