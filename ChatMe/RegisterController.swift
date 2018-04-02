@@ -39,6 +39,17 @@ class RegisterController: UIViewController {
         emailTextField.delegate = self
     }
     
+    func showAlertView(alertMessage : String){
+        let alertController = UIAlertController()
+        alertController.title = "Error"
+        alertController.message = alertMessage
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func backActivity(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -55,14 +66,14 @@ class RegisterController: UIViewController {
                         if error==nil{
                             
                         } else {
-                            print(error?.localizedDescription as Any)
+                            self.showAlertView(alertMessage: (error?.localizedDescription)!)
                         }
                     })
                 }
                 self.activityIndicator.stopAnimating()
                self.dismiss(animated: true, completion: nil) //Return To LoginController
             } else { //Sign Up Unsuccessful
-                print(error?.localizedDescription as Any)
+                self.showAlertView(alertMessage: (error?.localizedDescription)!)
             }
         }
     }

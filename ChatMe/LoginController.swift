@@ -54,6 +54,16 @@ class LoginController: UIViewController {
         registerBtn.clipsToBounds = true
     }
     
+    func showAlertView(alertMessage : String){
+        let alertController = UIAlertController()
+        alertController.title = "Error"
+        alertController.message = alertMessage
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     @IBAction func registerActivity(_ sender: Any) {
         performSegue(withIdentifier: "registerSegue", sender: sender)
@@ -67,7 +77,7 @@ class LoginController: UIViewController {
                     self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "mainActivity", sender: sender)
                 } else { //Failed Authentication
-                    print(error?.localizedDescription as Any)
+                    self.showAlertView(alertMessage: (error?.localizedDescription)!)
                     self.activityIndicator.stopAnimating()
                 }
             })
