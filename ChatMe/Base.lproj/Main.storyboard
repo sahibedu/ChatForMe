@@ -40,7 +40,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-wz-Z9z">
                                             <rect key="frame" x="8" y="234" width="304" height="30"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Be2-Ar-kVP"/>
                                             </constraints>
@@ -55,6 +55,7 @@
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LXU-ua-w8P">
                                             <rect key="frame" x="8" y="272" width="304" height="30"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="9hs-FM-jfU"/>
                                             </constraints>
@@ -100,6 +101,10 @@
                                                 <action selector="registerActivity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kmz-Ed-KsP"/>
                                             </connections>
                                         </button>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nVq-e5-5gb">
+                                            <rect key="frame" x="150" y="351" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="ODT-w9-SJf" secondAttribute="trailing" constant="62" id="0ty-Cf-GSu"/>
@@ -139,6 +144,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WsL-XP-zss"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="nVq-e5-5gb" id="IlO-zN-bFh"/>
                         <outlet property="emailTextField" destination="S6v-wz-Z9z" id="DYZ-Lt-Qgg"/>
                         <outlet property="loginBtn" destination="7kq-Zq-L5k" id="Rn5-ft-1Hm"/>
                         <outlet property="passwordTextField" destination="LXU-ua-w8P" id="aYX-HH-xY4"/>
@@ -184,7 +190,7 @@
                                             <rect key="frame" x="8" y="330" width="304" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCl-CA-1vH">
                                             <rect key="frame" x="16" y="460" width="288" height="39"/>
@@ -220,6 +226,10 @@
                                                 <action selector="backActivity:" destination="vEl-KP-gUa" eventType="touchUpInside" id="Ni8-ca-FFn"/>
                                             </connections>
                                         </button>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RQ4-af-22k">
+                                            <rect key="frame" x="150" y="469" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="k3k-lT-rPe" secondAttribute="trailing" constant="8" id="1eb-Kw-Fr3"/>
@@ -258,6 +268,7 @@
                         <viewLayoutGuide key="safeArea" id="Umv-3i-dUc"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="RQ4-af-22k" id="gJ6-Rd-2ia"/>
                         <outlet property="backBtn" destination="5uf-Yv-pF1" id="Vbh-Ga-3Ng"/>
                         <outlet property="emailTextField" destination="QIr-ON-ygW" id="7oW-sy-w38"/>
                         <outlet property="passwordTextField" destination="6Ee-FI-ORb" id="7pn-iY-EfX"/>
@@ -291,7 +302,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
                                         </textField>
                                     </barButtonItem>
                                     <barButtonItem systemItem="compose" id="CT6-SI-04A">
@@ -349,18 +360,18 @@
                                     <constraint firstItem="EDo-cb-JwZ" firstAttribute="top" secondItem="znA-X0-Sqf" secondAttribute="bottom" constant="6" id="soG-I5-zDi"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-sA-mLD">
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-sA-mLD">
                                 <rect key="frame" x="0.0" y="70" width="320" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageBox" textLabel="16j-Mm-Q5c" style="IBUITableViewCellStyleDefault" id="KNT-47-2fs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageBox" textLabel="KiS-gd-Dnv" style="IBUITableViewCellStyleDefault" id="KNT-47-2fs">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KNT-47-2fs" id="xAJ-AO-op7">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="16j-Mm-Q5c">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KiS-gd-Dnv">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
