@@ -20,20 +20,27 @@ class MainViewController: UIViewController {
     var messages : [DataSnapshot]! = []
     var currentUser = "Optimus Prime"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseSetup()
-        messageTableView.delegate = self
-        messageTableView.dataSource = self
-        messageTextField.delegate = self
-        subscribeToKeyboardNotification()
+        delegateSetup()
         storageSetup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    fileprivate func delegateSetup() {
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
+        messageTextField.delegate = self
     }
     
     func databaseSetup(){
@@ -50,9 +57,6 @@ class MainViewController: UIViewController {
     func storageSetup(){
         storageReference = Storage.storage().reference()
     }
-    
-    
-    
     //--------------------------------------------------------------------------------------------------------
     //MARK: ACTIONS
     //--------------------------------------------------------------------------------------------------------
@@ -165,7 +169,7 @@ extension MainViewController{
     }
     @objc func keyboardWillShow(_ notification:Notification) {
         if (messageTextField.isFirstResponder) {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     @objc func returnKeyboardBack(){

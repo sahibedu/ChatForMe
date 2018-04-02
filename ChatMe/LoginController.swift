@@ -19,11 +19,11 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialView()
-        subscribeToKeyboardNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        subscribeToKeyboardNotification()
         if let _ = Auth.auth().currentUser{
             self.performSegue(withIdentifier: "mainActivity", sender: self)
         }
@@ -32,8 +32,6 @@ class LoginController: UIViewController {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-    
-    
     fileprivate func initialView() {
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.white.cgColor
@@ -53,18 +51,7 @@ class LoginController: UIViewController {
         registerBtn.layer.cornerRadius = 10
         registerBtn.clipsToBounds = true
     }
-    
-    func showAlertView(alertMessage : String){
-        let alertController = UIAlertController()
-        alertController.title = "Error"
-        alertController.message = alertMessage
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    
+    //MARK: IBACTIONS
     @IBAction func registerActivity(_ sender: Any) {
         performSegue(withIdentifier: "registerSegue", sender: sender)
     }
@@ -85,14 +72,14 @@ class LoginController: UIViewController {
     }
     
 }
-
+//MARK: TEXTFIELD DELEGATES
 extension LoginController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
-
+//MARK: UI CHANGE FOR KEYBOARD
 extension LoginController{
     func subscribeToKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -103,7 +90,7 @@ extension LoginController{
     }
     @objc func keyboardWillShow(_ notification:Notification) {
         if (passwordTextField.isFirstResponder) {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     @objc func returnKeyboardBack(){

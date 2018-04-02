@@ -288,30 +288,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVD-DI-uys">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="camera" id="1iT-zo-gxM">
-                                        <connections>
-                                            <action selector="CameraAction:" destination="iEq-Ke-j12" id="GqN-o8-kkn"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Item" style="plain" id="7xv-ot-XoB">
-                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="always" id="QsR-Un-g88" userLabel="MessageTextField">
-                                            <rect key="frame" x="46" y="7" width="229" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
-                                        </textField>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="compose" id="CT6-SI-04A">
-                                        <connections>
-                                            <action selector="SendMsgAction:" destination="iEq-Ke-j12" id="on8-m9-KLT"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NI2-Wc-7E9">
                                 <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                                 <subviews>
@@ -360,7 +336,7 @@
                                     <constraint firstItem="EDo-cb-JwZ" firstAttribute="top" secondItem="znA-X0-Sqf" secondAttribute="bottom" constant="6" id="soG-I5-zDi"/>
                                 </constraints>
                             </view>
-                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-sA-mLD">
+                            <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-sA-mLD">
                                 <rect key="frame" x="0.0" y="70" width="320" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -383,19 +359,43 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVD-DI-uys">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="1iT-zo-gxM">
+                                        <connections>
+                                            <action selector="CameraAction:" destination="iEq-Ke-j12" id="GqN-o8-kkn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" style="plain" id="7xv-ot-XoB">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="always" id="QsR-Un-g88" userLabel="MessageTextField">
+                                            <rect key="frame" x="46" y="7" width="229" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="compose" id="CT6-SI-04A">
+                                        <connections>
+                                            <action selector="SendMsgAction:" destination="iEq-Ke-j12" id="on8-m9-KLT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NI2-Wc-7E9" firstAttribute="leading" secondItem="aoZ-ra-7bE" secondAttribute="leading" id="0ZZ-x6-84Y"/>
                             <constraint firstItem="NI2-Wc-7E9" firstAttribute="top" secondItem="aoZ-ra-7bE" secondAttribute="top" id="4pa-XM-H2Y"/>
+                            <constraint firstItem="aoZ-ra-7bE" firstAttribute="trailing" secondItem="sdD-sA-mLD" secondAttribute="trailing" id="7Rk-Wm-zfG"/>
                             <constraint firstItem="NI2-Wc-7E9" firstAttribute="trailing" secondItem="aoZ-ra-7bE" secondAttribute="trailing" id="8NS-Gl-ao5"/>
                             <constraint firstItem="sdD-sA-mLD" firstAttribute="top" secondItem="NI2-Wc-7E9" secondAttribute="bottom" id="BIl-rZ-UZ1"/>
                             <constraint firstItem="YVD-DI-uys" firstAttribute="leading" secondItem="aoZ-ra-7bE" secondAttribute="leading" id="BKr-h0-hE5"/>
                             <constraint firstItem="YVD-DI-uys" firstAttribute="top" secondItem="sdD-sA-mLD" secondAttribute="bottom" id="jZW-Qp-48W"/>
                             <constraint firstItem="YVD-DI-uys" firstAttribute="bottom" secondItem="aoZ-ra-7bE" secondAttribute="bottom" id="k9m-QT-Q6G"/>
                             <constraint firstItem="YVD-DI-uys" firstAttribute="trailing" secondItem="aoZ-ra-7bE" secondAttribute="trailing" id="pI5-sV-NsV"/>
-                            <constraint firstItem="sdD-sA-mLD" firstAttribute="leading" secondItem="aoZ-ra-7bE" secondAttribute="leading" id="wCI-jS-vog"/>
-                            <constraint firstItem="sdD-sA-mLD" firstAttribute="trailing" secondItem="aoZ-ra-7bE" secondAttribute="trailing" id="xxX-bS-p2T"/>
+                            <constraint firstItem="sdD-sA-mLD" firstAttribute="leading" secondItem="aoZ-ra-7bE" secondAttribute="leading" id="zCZ-oB-6Zj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aoZ-ra-7bE"/>
                     </view>

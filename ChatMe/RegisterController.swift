@@ -22,11 +22,12 @@ class RegisterController: UIViewController {
         initialView()
         subscribeToKeyboardNotification()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
     fileprivate func initialView() {
         backBtn.layer.cornerRadius = 10
         backBtn.clipsToBounds = true
@@ -38,17 +39,7 @@ class RegisterController: UIViewController {
         passwordTextField.delegate = self
         emailTextField.delegate = self
     }
-    
-    func showAlertView(alertMessage : String){
-        let alertController = UIAlertController()
-        alertController.title = "Error"
-        alertController.message = alertMessage
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
-    }
+    //MARK: IBACTIONS
     
     @IBAction func backActivity(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -63,22 +54,20 @@ class RegisterController: UIViewController {
                     let userNameChangeReq = Auth.auth().currentUser?.createProfileChangeRequest()
                     userNameChangeReq?.displayName = self.usernameTextField.text!
                     userNameChangeReq?.commitChanges(completion: { (error) in
-                        if error==nil{
-                            
-                        } else {
+                        if error != nil{
                             self.showAlertView(alertMessage: (error?.localizedDescription)!)
                         }
                     })
                 }
                 self.activityIndicator.stopAnimating()
-               self.dismiss(animated: true, completion: nil) //Return To LoginController
+                self.dismiss(animated: true, completion: nil) //Return To LoginController
             } else { //Sign Up Unsuccessful
                 self.showAlertView(alertMessage: (error?.localizedDescription)!)
             }
         }
     }
 }
-
+//MARK: TEXTFIELD DELEGATE
 extension RegisterController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -86,6 +75,7 @@ extension RegisterController : UITextFieldDelegate{
     }
 }
 
+//MARK: UI CHANGES FOR KEYBOARD
 extension RegisterController{
     func subscribeToKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -112,4 +102,17 @@ extension RegisterController{
         return keyboardSize.cgRectValue.height
     }
     
+}
+//MARK: ALERTVIEW
+extension UIViewController{
+    func showAlertView(alertMessage : String){
+        let alertController = UIAlertController()
+        alertController.title = "Error"
+        alertController.message = alertMessage
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
