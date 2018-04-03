@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import MapKit
+import CoreLocation
 
 class LoginController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -15,14 +17,25 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    let locationManager = CLLocationManager()
+    var userLocations = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialView()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("View Will Appear")
         subscribeToKeyboardNotification()
         if let _ = Auth.auth().currentUser{
             self.performSegue(withIdentifier: "mainActivity", sender: self)
@@ -106,6 +119,15 @@ extension LoginController{
         return keyboardSize.cgRectValue.height
     }
     
+}
+
+extension LoginController : CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userLocations = (manager.location?.coordinate)!
+        print("Latitude \(userLocations.latitude)\(userLocations.longitude)")
+        let _ = Networking(userCoordinate: userLocations)
+        locationManager.stopUpdatingLocation()
+    }
 }
 
 

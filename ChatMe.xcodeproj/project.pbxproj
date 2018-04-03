@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F047A6D20735821007D7B6F /* NetworkingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F047A6C20735821007D7B6F /* NetworkingConstants.swift */; };
+		2F047A6F207360CC007D7B6F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F047A6E207360CC007D7B6F /* Networking.swift */; };
 		2F905B8620703DD60002CAE5 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F905B8520703DD60002CAE5 /* RegisterController.swift */; };
 		2FA445102070492A00855AB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FA4450F2070492A00855AB9 /* GoogleService-Info.plist */; };
 		2FA44512207052AB00855AB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA44511207052AB00855AB9 /* MainViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F047A6C20735821007D7B6F /* NetworkingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConstants.swift; sourceTree = "<group>"; };
+		2F047A6E207360CC007D7B6F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		2F905B8520703DD60002CAE5 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		2FA4450F2070492A00855AB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FA44511207052AB00855AB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				2F905B8520703DD60002CAE5 /* RegisterController.swift */,
 				2FA44511207052AB00855AB9 /* MainViewController.swift */,
 				2FA445132070575C00855AB9 /* Constants.swift */,
+				2F047A6C20735821007D7B6F /* NetworkingConstants.swift */,
+				2F047A6E207360CC007D7B6F /* Networking.swift */,
 			);
 			path = ChatMe;
 			sourceTree = "<group>";
@@ -241,8 +247,10 @@
 				2FA445142070575C00855AB9 /* Constants.swift in Sources */,
 				2FCD842E206E827C001EC508 /* LoginController.swift in Sources */,
 				2FCD842C206E827C001EC508 /* AppDelegate.swift in Sources */,
+				2F047A6D20735821007D7B6F /* NetworkingConstants.swift in Sources */,
 				2F905B8620703DD60002CAE5 /* RegisterController.swift in Sources */,
 				2FA44512207052AB00855AB9 /* MainViewController.swift in Sources */,
+				2F047A6F207360CC007D7B6F /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
