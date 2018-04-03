@@ -34,7 +34,7 @@ class LoginController: UIViewController {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotification()
         if let _ = Auth.auth().currentUser{
-            self.performSegue(withIdentifier: "mainActivity", sender: self)
+            performSegue(withIdentifier: "mainActivity", sender: self)
         }
     }
     
@@ -103,12 +103,13 @@ class LoginController: UIViewController {
     
 }
 //MARK: TEXTFIELD DELEGATES
-extension LoginController : UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+extension UIViewController:UITextFieldDelegate{
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
+
 //MARK: UI CHANGE FOR KEYBOARD
 extension LoginController{
     func subscribeToKeyboardNotification(){
@@ -119,13 +120,25 @@ extension LoginController{
         NotificationCenter.default.removeObserver(self)
     }
     @objc func keyboardWillShow(_ notification:Notification) {
-        if (passwordTextField.isFirstResponder) {
-            view.frame.origin.y = -getKeyboardHeight(notification)
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation){
+            if (passwordTextField.isFirstResponder || emailTextField.isFirstResponder) {
+                view.frame.origin.y = (-getKeyboardHeight(notification)+50)
+            }
+        } else {
+            if (passwordTextField.isFirstResponder) {
+                view.frame.origin.y = (-getKeyboardHeight(notification)+100)
+            }
         }
     }
     @objc func returnKeyboardBack(){
-        if (passwordTextField.isFirstResponder) {
-            view.frame.origin.y=0
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation){
+            if (passwordTextField.isFirstResponder || emailTextField.isFirstResponder) {
+                view.frame.origin.y=0
+            }
+        } else {
+            if (passwordTextField.isFirstResponder) {
+                view.frame.origin.y=0
+            }
         }
     }
     

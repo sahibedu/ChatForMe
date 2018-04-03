@@ -31,10 +31,9 @@ class Networking{
                         let weatherArray = parsedResult[Network.ResponseKeys.Weather]
                         let weatherDict = weatherArray![0] as! [String:AnyObject]
                         let weatherDescription = weatherDict[Network.ResponseKeys.WeatherDescription]
-                        let city = parsedResult["name"]
+                        let city = parsedResult[Network.ResponseKeys.CityName]
                         Networking.locationValues.append(weatherDescription as! String)
                         Networking.locationValues.append(city as! String)
-                        print("Inside Clousere")
                         print(Networking.locationValues)
                         NotificationCenter.default.post(name: NSNotification.Name.ValueChanged, object: Networking.locationValues)
                     }

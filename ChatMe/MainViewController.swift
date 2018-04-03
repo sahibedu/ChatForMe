@@ -87,7 +87,7 @@ class MainViewController: UIViewController {
     }
     @IBAction func logOutAction(_ sender: UIButton) {
         try? Auth.auth().signOut()
-        performSegue(withIdentifier: "backToLogin", sender: sender)
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -110,6 +110,8 @@ extension MainViewController : UITableViewDelegate,UITableViewDataSource{
                         prototypeCell.imageView?.image = messageImage
                         prototypeCell.setNeedsLayout()
                     }
+                } else {
+                    self.showAlertView(alertMessage: (error?.localizedDescription)!)
                 }
             })
             prototypeCell.textLabel?.text = "By \(message[Constants.messageFields.username] ?? "")"
@@ -140,7 +142,7 @@ extension MainViewController : UIImagePickerControllerDelegate,UINavigationContr
                 print("Image Saved Successfully")
                 self.sendMessage(imageurl: self.storageReference.child(metaData.path!).description)
             } else{
-                print(error?.localizedDescription as Any)
+                self.showAlertView(alertMessage: (error?.localizedDescription)!)
             }
         }
     }
@@ -150,13 +152,6 @@ extension MainViewController : UIImagePickerControllerDelegate,UINavigationContr
     }
 }
 
-//MARK:TEXTFIELD DELEGATE
-extension MainViewController:UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
 //MARK:KEYBOARD UI CHANGE
 
 extension MainViewController{

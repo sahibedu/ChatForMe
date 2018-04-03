@@ -67,13 +67,6 @@ class RegisterController: UIViewController {
         }
     }
 }
-//MARK: TEXTFIELD DELEGATE
-extension RegisterController : UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
 
 //MARK: UI CHANGES FOR KEYBOARD
 extension RegisterController{
@@ -85,23 +78,33 @@ extension RegisterController{
         NotificationCenter.default.removeObserver(self)
     }
     @objc func keyboardWillShow(_ notification:Notification) {
-        if (passwordTextField.isFirstResponder || usernameTextField.isFirstResponder) {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation){
+            if (passwordTextField.isFirstResponder || emailTextField.isFirstResponder || usernameTextField.isFirstResponder) {
+                view.frame.origin.y = (-getKeyboardHeight(notification)+65)
+            }
+        } else {
+            if (passwordTextField.isFirstResponder) {
+                view.frame.origin.y = (-getKeyboardHeight(notification)+100)
+            }
         }
     }
     @objc func returnKeyboardBack(){
-        if (passwordTextField.isFirstResponder || usernameTextField.isFirstResponder) {
-            view.frame.origin.y=0
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation){
+            if (passwordTextField.isFirstResponder || emailTextField.isFirstResponder||usernameTextField.isFirstResponder) {
+                view.frame.origin.y=0
+            }
+        } else {
+            if (passwordTextField.isFirstResponder) {
+                view.frame.origin.y=0
+            }
         }
     }
-    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
-    
 }
 //MARK: ALERTVIEW
 extension UIViewController{
