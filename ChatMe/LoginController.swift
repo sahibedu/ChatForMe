@@ -17,34 +17,40 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var weatherTextLabel: UILabel!
+    
     let locationManager = CLLocationManager()
     var userLocations = CLLocationCoordinate2D()
+    var locationValue = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialView()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
+        locationManagerSetup()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateWeatherLabel) , name: Notification.Name.ValueChanged, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("View Will Appear")
         subscribeToKeyboardNotification()
         if let _ = Auth.auth().currentUser{
             self.performSegue(withIdentifier: "mainActivity", sender: self)
         }
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    @objc func updateWeatherLabel(){
+        let networkingInstance = Networking()
+        locationValue = networkingInstance.getValues()
+        DispatchQueue.main.async {
+            self.weatherTextLabel.text = "Today It's \(self.locationValue[0]) over \(self.locationValue[1])"
+        }
+    }
+    
     fileprivate func initialView() {
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.white.cgColor
@@ -64,6 +70,17 @@ class LoginController: UIViewController {
         registerBtn.layer.cornerRadius = 10
         registerBtn.clipsToBounds = true
     }
+    
+    fileprivate func locationManagerSetup() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     //MARK: IBACTIONS
     @IBAction func registerActivity(_ sender: Any) {
         performSegue(withIdentifier: "registerSegue", sender: sender)
@@ -124,11 +141,12 @@ extension LoginController{
 extension LoginController : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocations = (manager.location?.coordinate)!
-        print("Latitude \(userLocations.latitude)\(userLocations.longitude)")
-        let _ = Networking(userCoordinate: userLocations)
+        let networkInstance = Networking()
+        locationValue = networkInstance.networkSession(userCoordinate: userLocations)
         locationManager.stopUpdatingLocation()
     }
 }
+
 
 
 
