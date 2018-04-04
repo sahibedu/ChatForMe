@@ -349,7 +349,7 @@
                                 </constraints>
                             </view>
                             <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-sA-mLD">
-                                <rect key="frame" x="0.0" y="70" width="320" height="454"/>
+                                <rect key="frame" x="0.0" y="106" width="320" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageBox" textLabel="KiS-gd-Dnv" style="IBUITableViewCellStyleDefault" id="KNT-47-2fs">
@@ -407,7 +407,7 @@
                         <constraints>
                             <constraint firstItem="aoZ-ra-7bE" firstAttribute="trailing" secondItem="NI2-Wc-7E9" secondAttribute="trailing" id="KF2-mt-zOt"/>
                             <constraint firstItem="NI2-Wc-7E9" firstAttribute="leading" secondItem="aoZ-ra-7bE" secondAttribute="leading" id="Nu7-WB-Hfk"/>
-                            <constraint firstItem="sdD-sA-mLD" firstAttribute="top" secondItem="aoZ-ra-7bE" secondAttribute="top" constant="50" id="OJJ-lM-Jsc"/>
+                            <constraint firstItem="sdD-sA-mLD" firstAttribute="top" secondItem="aoZ-ra-7bE" secondAttribute="top" constant="86" id="OJJ-lM-Jsc"/>
                             <constraint firstItem="aoZ-ra-7bE" firstAttribute="trailing" secondItem="YVD-DI-uys" secondAttribute="trailing" id="Srt-la-4pK"/>
                             <constraint firstItem="aoZ-ra-7bE" firstAttribute="trailing" secondItem="sdD-sA-mLD" secondAttribute="trailing" id="eTp-Qm-pc1"/>
                             <constraint firstItem="aoZ-ra-7bE" firstAttribute="bottom" secondItem="YVD-DI-uys" secondAttribute="bottom" id="enk-Ad-bKb"/>
