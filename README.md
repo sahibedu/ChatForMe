@@ -1,6 +1,6 @@
 # ChatForMe
 #### Dated: 02 April , 2018
-### Made By Sahib(RTS Production)
+### Made By Sahib
 #### Created Under Udacity IOS ND Projects
 
 ### Prerequisite
