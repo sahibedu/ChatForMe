@@ -1,6 +1,6 @@
 # ChatForMe
 #### Dated: 02 April , 2018
-### Made By Sahib(RTS Production)
+### Made By Sahib(RTS Production ft Rounak Arya for Hacktoberfest 2019)
 #### Created Under Udacity IOS ND Projects
 
 ### Prerequisite
